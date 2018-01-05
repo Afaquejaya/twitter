@@ -1,52 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Drawer from 'react-native-drawer';
+import Main from './src/components/Main';
+import MyDrawer from './src/components/MyDrawer';
 
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+export default class App extends React.Component {
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerOpen: false,
+      drawerDisabled: false
+    };
+  }
 
-export default class App extends Component<{}> {
+  closeDrawer = () => {
+    this._drawer.close()
+  };
+
+  openDrawer = () => {
+    this._drawer.open();
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+     <Drawer
+          ref={(ref) => this._drawer = ref}
+          type="static"
+          content={<MyDrawer />}
+          tapToOpen={true}
+          tapToClose={true}
+          openDrawerOffset={-3}
+          styles={drawerStyle}
+          tweenHandler={(ratio) => ({main: {opacity:(2-ratio)/2}})
+        }>
+        <Main />
+        </Drawer>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const drawerStyle = {
+    drawer: {shadowColor:'#000000', shadowOpacity:0.9, shadowRadius:3},
+    main: {paddingLeft:4}
+}
