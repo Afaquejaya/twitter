@@ -4,7 +4,7 @@ export default class HeaderExample extends Component {
   render() {
     return (
       <Container>
-        <Header  style={{backgroundColor:"#fff"}}>
+        <Header  style={{backgroundColor:"#fff", elevation:0, searchBar: true}}>
           <Left>
             <Button transparent>
               <Icon name='arrow-back' />
