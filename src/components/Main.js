@@ -23,7 +23,7 @@ export default class Main extends React.Component {
             <Header hasTabs style={{ backgroundColor: 'white' }}>
                 <Left>
                     <TouchableOpacity onPress={this.context.drawer.open}>
-                        <Thumbnail source={require('../images/icon.jpg')} />
+                        <Thumbnail small source={require('../images/icon.jpg')} />
                     </TouchableOpacity>
                 </Left>
             <Body>
@@ -33,7 +33,8 @@ export default class Main extends React.Component {
             </Header>
         </View>
         <Tabs tabBarUnderlineStyle={{ backgroundColor: '#3BB9FF', borderBottomWidth: 0 }}>
-        <Tab heading={<TabHeading style={{backgroundColor:'white'}}>
+        <Tab 
+        heading={ <TabHeading style={{backgroundColor:'white' }}>
         <Icon name="home" style={{color:'#3BB9FF'}} /></TabHeading> }>
                  </Tab>
                  <Tab heading={<TabHeading style={{ backgroundColor: 'white'}} ><Icon name="search" style={{color:'#3BB9FF'}} /></TabHeading>}>

@@ -2,6 +2,8 @@ import React from 'react';
 import { Body, Card, CardItem, Content, Container, Deckswiper, Footer, Header, Icon, ListItem, List, Left, Right, Text, Thumbnail, View } from 'native-base';
 import { Image, StatusBar, Settings } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+// Our list to load items in drawer
+const list = [{name: "Profile",icon: 'person'},{name: "Lists", icon: 'list-box'},{name: "Moments",icon: 'flash'}, {name: 'Highlights',icon:'albums'} ];
 
 export default class MyDrawer extends React.Component {
     render() {
@@ -10,49 +12,39 @@ export default class MyDrawer extends React.Component {
                 <Content>
                     <Card>
                         <CardItem>
+                        {/* Top part of drawer*/}
                             <View>
-                                <Thumbnail source={ require('../images/icon.jpg')} />
-                                <Text style={{ fontWeight: 'bold'}}> Paras Sidhu<Icon name="arrow-dropdown" style={{ color: '#3BB9FF' }} /></Text>
+                                <Thumbnail source={require('../images/icon.jpg')} />
+                                <Text style={{ fontWeight: 'bold' }}> Paras Sidhu   <Icon name="arrow-dropdown" style={{ color: '#3BB9FF', alignContent: 'center' }} /></Text>
                                 <Text note>@parassidhu1</Text>
                             <View style={{ flexDirection: 'row' }}>
-                                <Text>xyz Following</Text>
+                                <Text>xyz Following </Text>
                                 <Text>abc Followers</Text>
                             </View>
                             </View>
                         </CardItem>
 
-                        <CardItem style={{ elevation: 2 }} >
-                          <List>
-                              <ListItem button noborder icon>
-                                <Left>
-                                    <Icon name='person' style={style.iconStyle} />
-                                        <Text>Profile</Text>
-                                    </Left>
-                                </ListItem>
-
-                                <ListItem button noborder icon>
+                        {/*Main middle part loaded using constant defined at line 6*/}
+                        <CardItem style={{ elevation: 1 }}>
+                          <List
+                            dataArray={list}
+                            renderRow={data => {
+                              return (
+                                <ListItem
+                                  button noborder icon>
                                     <Left>
-                                        <Icon name='list-box' style={style.iconStyle} />
-                                            <Text>Lists</Text>
+                                      <Icon name={data.icon} />
                                     </Left>
+                                    <Body>
+                                      <Text>{data.name}</Text>
+                                    </Body>
                                 </ListItem>
+                              );
+                          }}
+                          />
+                        </CardItem>
 
-                                <ListItem button noborder icon>
-                                    <Left>
-                                        <Icon name='flash' style={style.iconStyle} />
-                                            <Text>Flash</Text>
-                                    </Left>
-                                </ListItem>
-
-                                <ListItem button noborder icon>
-                                    <Left>
-                                        <Icon name='albums' style={style.iconStyle} />
-                                            <Text>Albums</Text>
-                                    </Left>
-                                </ListItem>
-                          </List>
-                      </CardItem>
-
+                      {/* Bottom part of drawer (above footer)*/}
                       <CardItem>
                             <List>
                                 <ListItem button noborder>
@@ -79,9 +71,3 @@ export default class MyDrawer extends React.Component {
         );
     }
 }
-
-const style = {
-  iconStyle: {
-    color: '#3BB9FF'
-  }
-};

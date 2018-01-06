@@ -4,7 +4,6 @@ import Main from './src/components/Main';
 import MyDrawer from './src/components/MyDrawer';
 
 export default class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +22,8 @@ export default class App extends React.Component {
 
   render() {
     return (
+      // Set up drawer by specifying required params
+      // Content is provided by MyDrawer.js file.
      <Drawer
           ref={(ref) => this._drawer = ref}
           type="static"
@@ -33,15 +34,17 @@ export default class App extends React.Component {
           panCloseMask={0.2}
           closedDrawerOffset={-3}
           styles={drawerStyle}
-          tweenHandler={(ratio) => ({main: {opacity:(2-ratio)/2}})
-        }>
-        <Main />
+          tweenHandler={(ratio) => ({ main: { opacity: (2 - ratio) / 2 } })
+        }
+     >
+        {/*Then Load the main file*/}
+          <Main />
         </Drawer>
-    )
+    );
   }
 }
 
 const drawerStyle = {
-    drawer: {shadowColor:'#000000', shadowOpacity:0.9, shadowRadius:3},
-    main: {paddingLeft:4}
-}
+    drawer: { shadowColor: '#000000', shadowOpacity: 0.9, shadowRadius: 3 },
+    main: { paddingLeft: 4 }
+};
