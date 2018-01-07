@@ -2,8 +2,9 @@ import React from 'react';
 import { Body, Card, CardItem, Content, Container, Deckswiper, Footer, Header, Icon, ListItem, List, Left, Right, Text, Thumbnail, View } from 'native-base';
 import { Image, StatusBar, Settings } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-// Our list to load items in drawer
-const list = [{name: "Profile",icon: 'person'},{name: "Lists", icon: 'list-box'},{name: "Moments",icon: 'flash'}, {name: 'Highlights',icon:'albums'} ];
+
+const list = [{name: "Profile",icon: 'person'},{name: "Lists", icon: 'list-box'},
+              {name: "Moments",icon: 'flash'}, {name: 'Highlights',icon:'albums'} ];
 
 export default class MyDrawer extends React.Component {
     render() {
@@ -61,7 +62,7 @@ export default class MyDrawer extends React.Component {
 
               <Footer style={{ backgroundColor: 'white' }}>
                   <Left>
-                      <Icon style={{ marginLeft: 20, color: '#3BB9FF' }} name='moon' />
+                      <Icon style={{ marginLeft: 15, color: '#3BB9FF' }} name='moon' />
                   </Left>
                   <Right>
                       <Icon style={{ marginRight: 15, color: '#3BB9FF' }} name='qr-scanner' />
