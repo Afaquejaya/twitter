@@ -10,6 +10,7 @@ const HomeTab = () => {
       <CardDetail />
       <CardDetail />
       <CardDetail />
+      
     </Content>
     );
   };

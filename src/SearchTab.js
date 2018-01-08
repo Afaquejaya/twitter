@@ -6,9 +6,7 @@ render() {
 
     return (
       <Container>
-        <Item style={{backgroundColor: '#3BB9FF', width:250, alignSelf: 'center'}}>
-          <Input placeholder="Search Twitter" />
-        </Item>
+      
       </Container>
 
     );
