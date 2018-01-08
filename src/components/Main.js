@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import NotificationsTab from '../NotificationsTab';
 import MessagesTab from '../MessagesTab';
 import HomeTab from '../HomeTab';
+import SearchTab from '../SearchTab';
 
 export default class Main extends React.Component {
 
@@ -23,7 +24,7 @@ export default class Main extends React.Component {
     return (
       <Container>
         <View>
-            <Header hasTabs style={{ backgroundColor: 'white' }}>
+            <Header hasTabs style={styles.background}>
                 <Left>
                     <TouchableOpacity onPress={this.context.drawer.open}>
                         <Thumbnail small source={require('../images/icon.jpg')} />
@@ -37,16 +38,17 @@ export default class Main extends React.Component {
         </View>
         <Tabs tabBarUnderlineStyle={{ backgroundColor: '#3BB9FF', borderBottomWidth: 0 }}>
                 <Tab
-                    heading={ <TabHeading style={{backgroundColor:'white' }}>
-                    <Icon name="home" style={{color:'#3BB9FF'}} /></TabHeading> }>
+                    heading={ <TabHeading style={styles.background}>
+                    <Icon name="home" style={styles.tabStyle} /></TabHeading> }>
                     <HomeTab />
                  </Tab>
-                 <Tab heading={<TabHeading style={{ backgroundColor: 'white'}} ><Icon name="search" style={{color:'#3BB9FF'}} /></TabHeading>}>
+                 <Tab heading={<TabHeading style={styles.background} ><Icon name="search" style={styles.tabStyle} /></TabHeading>}>
+                    <SearchTab />
                  </Tab>
-                 <Tab heading={ <TabHeading style={{backgroundColor:'white'}}><Icon name="notifications" style={{color:'#3BB9FF'}}/></TabHeading>}>
+                 <Tab heading={ <TabHeading style={styles.background}><Icon name="notifications" style={styles.tabStyle}/></TabHeading>}>
                     <NotificationsTab />
                  </Tab>
-                 <Tab heading={ <TabHeading style={{backgroundColor:'white'}}><Icon name="mail" style={{color:'#3BB9FF'}} /></TabHeading> }>
+                 <Tab heading={ <TabHeading style={styles.background}><Icon name="mail" style={styles.tabStyle} /></TabHeading> }>
                     <MessagesTab />
                  </Tab>
              </Tabs>
@@ -56,7 +58,7 @@ export default class Main extends React.Component {
              </Fab>
 
              <Footer style={{backgroundColor: 'white', height: 45}}>
-                <FooterTab style={{backgroundColor: 'white'}}>
+                <FooterTab style={styles.background}>
                     <Button>
                         <Text style={{fontSize: 12, color: '#3BB9FF', fontWeight: 'bold'}}> All</Text>
                     </Button>
@@ -72,3 +74,13 @@ export default class Main extends React.Component {
     );
   }
 }
+
+
+const styles={
+    background: {
+      backgroundColor: 'white'
+    },
+    tabStyle: {
+      color:'#3BB9FF'
+    }
+};
