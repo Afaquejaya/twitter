@@ -16,6 +16,6 @@ To get started with it, follow the instructions:
 (a) git clone https://github.com/sidhuparas/twitter.git
 (b) cd twitter
 (c) npm install
-(d) react-native-run-android
+(d) react-native run-android
 ```
 Command (c) will install dependencies while (d) will start the app in emulator or connected android device. Since I have used Windows laptop to develop it, it may not run on Mac/iOS.
